@@ -14,8 +14,8 @@ import br.com.brasilPrev.controller.UsuarioController;
 @EnableAutoConfiguration
 @EnableSpringDataWebSupport
 @ComponentScan("br.com.brasilPrev.service")
-@ComponentScan(basePackageClasses = UsuarioController.class)
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
+@ComponentScan(basePackageClasses = UsuarioController.class)//"br.com.brasilPrev.controller"
+@SpringBootApplication(exclude={DataSourceAutoConfiguration.class}) 
 public class BrasilPrevApplication {
 
 	public static void main(String[] args) {

@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
 
 import br.com.brasilPrev.service.CustomUserDetailService;
 
@@ -19,7 +20,8 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable().authorizeRequests().anyRequest().authenticated()
+		http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
+		.and().csrf().disable().authorizeRequests().anyRequest().authenticated()
 				// .antMatchers("/**").permitAll() .anyRequest(
 				.and().httpBasic(); // .and() //.addFilter(new
 

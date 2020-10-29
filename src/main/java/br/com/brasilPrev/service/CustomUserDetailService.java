@@ -3,7 +3,6 @@ package br.com.brasilPrev.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -28,13 +27,13 @@ public class CustomUserDetailService implements UserDetailsService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Usuario usuario = Optional.ofNullable(this.usuarioRepository.findByNome_usuario(username))
+	public UserDetails loadUserByUsername(String nomeUsuario) throws UsernameNotFoundException {
+		Usuario usuario = (Usuario)Optional.ofNullable(this.usuarioRepository.findByNomeUsuario(nomeUsuario))
 				.orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
 		List<GrantedAuthority> authorityAdmin = AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIN");
 		List<GrantedAuthority> authorityUser = AuthorityUtils.createAuthorityList("ROLE_USER");
-		return new org.springframework.security.core.userdetails.User(usuario.getNome_usuario(),usuario.getSenha_usuario(),
-				usuario.isAdmin() ? authorityAdmin : authorityUser);
+		return new org.springframework.security.core.userdetails.User(usuario.getNomeUsuario(),
+				usuario.getSenhaUsuario(), usuario.isAdmin() ? authorityAdmin : authorityUser);
 	}
 
 }

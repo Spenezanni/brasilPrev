@@ -14,16 +14,16 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_USUARIO")
-	private Long id_usuario;
+	private Long idUsuario;
 
 	@Column(name = "NOME_USUARIO")
-	private String nome_usuario;
+	private String nomeUsuario;
 	
 	@Column(name = "SENHA_USUARIO")
-	private String senha_usuario;
+	private String senhaUsuario;
 
 	@Column(name = "DS_EMAIL")
-	private String ds_email;
+	private String dsEmail;
 	
 	@Column(name="ADMIN")
 	private boolean admin;
@@ -32,53 +32,44 @@ public class Usuario {
 		
 	}
 
-	public Usuario(String nome_usuario, String senha_usuario, String ds_email) {
-		this.nome_usuario = nome_usuario;
-		this.senha_usuario = senha_usuario;
-		this.ds_email = ds_email;
-	}
-	
-	
-
-	public Usuario(Long id_usuario, String nome_usuario, String senha_usuario, String ds_email, boolean admin) {
+	public Usuario(String nomeUsuario, String senhaUsuario, String dsEmail, boolean admin) {
 		super();
-		this.id_usuario = id_usuario;
-		this.nome_usuario = nome_usuario;
-		this.senha_usuario = senha_usuario;
-		this.ds_email = ds_email;
+		this.nomeUsuario = nomeUsuario;
+		this.senhaUsuario = senhaUsuario;
+		this.dsEmail = dsEmail;
 		this.admin = admin;
 	}
 
-	public Long getId_usuario() {
-		return id_usuario;
+	public Long getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setId_usuario(Long id_usuario) {
-		this.id_usuario = id_usuario;
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
-	public String getNome_usuario() {
-		return nome_usuario;
+	public String getNomeUsuario() {
+		return nomeUsuario;
 	}
 
-	public void setNome_usuario(String nome_usuario) {
-		this.nome_usuario = nome_usuario;
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
 	}
 
-	public String getSenha_usuario() {
-		return senha_usuario;
+	public String getSenhaUsuario() {
+		return senhaUsuario;
 	}
 
-	public void setSenha_usuario(String senha_usuario) {
-		this.senha_usuario = senha_usuario;
+	public void setSenhaUsuario(String senhaUsuario) {
+		this.senhaUsuario = senhaUsuario;
 	}
 
-	public String getDs_email() {
-		return ds_email;
+	public String getDsEmail() {
+		return dsEmail;
 	}
 
-	public void setDs_email(String ds_email) {
-		this.ds_email = ds_email;
+	public void setDsEmail(String dsEmail) {
+		this.dsEmail = dsEmail;
 	}
 
 	public boolean isAdmin() {
@@ -88,9 +79,6 @@ public class Usuario {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	
-	
-	
 	
 	
 }

@@ -24,12 +24,13 @@ public class UsuarioRepositoryTest {
 	
 	@Test
 	public void criarPersistenciaDados() {
-		Usuario usuario = new Usuario("Sebastiao", "123", "sebastiao@teste.com");
+		Usuario usuario = new Usuario("Sebastiao", "123", "sebastiao@teste.com", true);
 		this.usuarioRepository.save(usuario);
-		assertThat(usuario.getId_usuario()).isNotNull();
-		assertThat(usuario.getNome_usuario()).isEqualTo("Sebastiao");
-		assertThat(usuario.getSenha_usuario()).isEqualTo("123");
-		assertThat(usuario.getDs_email()).isEqualTo("sebastiao@teste.com");
+		assertThat(usuario.getIdUsuario()).isNotNull();
+		assertThat(usuario.getNomeUsuario()).isEqualTo("Sebastiao");
+		assertThat(usuario.getSenhaUsuario()).isEqualTo("123");
+		assertThat(usuario.getDsEmail()).isEqualTo("sebastiao@teste.com");
+		assertThat(usuario.isAdmin()).isTrue();
 		 
 	}
 

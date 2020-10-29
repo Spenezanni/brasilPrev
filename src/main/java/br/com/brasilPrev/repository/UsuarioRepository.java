@@ -7,7 +7,6 @@ import br.com.brasilPrev.modelo.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-	
-	Usuario findByNome_usuario(String nome_usuario);
-	
+
+	Usuario findByNomeUsuario(String nomeUsuario);
 }
