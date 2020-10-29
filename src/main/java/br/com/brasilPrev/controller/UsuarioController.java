@@ -20,7 +20,7 @@ import br.com.brasilPrev.service.UsuarioService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "usuario")
+@RequestMapping(path = "brasilPrev/usuario")
 public class UsuarioController {
 	
 	@Autowired

@@ -25,6 +25,9 @@ public class Usuario {
 	@Column(name = "DS_EMAIL")
 	private String ds_email;
 	
+	@Column(name="ADMIN")
+	private boolean admin;
+	
 	public Usuario() {
 		
 	}
@@ -33,6 +36,17 @@ public class Usuario {
 		this.nome_usuario = nome_usuario;
 		this.senha_usuario = senha_usuario;
 		this.ds_email = ds_email;
+	}
+	
+	
+
+	public Usuario(Long id_usuario, String nome_usuario, String senha_usuario, String ds_email, boolean admin) {
+		super();
+		this.id_usuario = id_usuario;
+		this.nome_usuario = nome_usuario;
+		this.senha_usuario = senha_usuario;
+		this.ds_email = ds_email;
+		this.admin = admin;
 	}
 
 	public Long getId_usuario() {
@@ -66,6 +80,16 @@ public class Usuario {
 	public void setDs_email(String ds_email) {
 		this.ds_email = ds_email;
 	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+	
+	
 	
 	
 	
