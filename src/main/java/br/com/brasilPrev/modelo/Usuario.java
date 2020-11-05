@@ -7,9 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.dom4j.tree.AbstractEntity;
+
+
 @Entity
 @Table(name = "USUARIO")
-public class Usuario {
+public class Usuario extends  AbstractEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -79,7 +82,6 @@ public class Usuario {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	
 	
 }
 

@@ -6,7 +6,7 @@ public class PasswordEncoder {
 	
 	public static void main(String[] args) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		System.out.println(passwordEncoder.encode("palavraChaveSecreta"));
+		System.out.println(passwordEncoder.encode("123"));
 	}
 
 }

@@ -27,15 +27,20 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 		http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()).and()
 		.csrf().disable().authorizeRequests()
 		//.antMatchers(HttpMethod.GET, SecurityConstants.SIGN_UP_URL).permitAll()
-		.antMatchers("/*/protected/**").hasRole("USER")
-		.antMatchers("/*/admin/**").hasRole("ADMIN")
-		.and()
-		.addFilter(new JWTAuthenticationFilter(authenticationManager()))
-		.addFilter(new JWTAuthorizationFilter(authenticationManager(),customUserDetailService ));
-		
-	
+		.antMatchers("/*/login/**").permitAll()
+		.antMatchers("/*/protected/**").hasRole("USER") 
+		.antMatchers("/*/admin/**").permitAll();//.hasRole("ADMIN")
+		/*.and()*/
+		/*.addFilter(new JWTAuthenticationFilter(authenticationManager()))
+		.addFilter(new JWTAuthorizationFilter(authenticationManager(),customUserDetailService ));*/
 	}
 	
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(customUserDetailService).passwordEncoder(new BCryptPasswordEncoder());
+	}
+
 	
 	
 	/*
@@ -50,12 +55,6 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	 * 
 	 * }
 	 */
-	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(customUserDetailService).passwordEncoder(new BCryptPasswordEncoder());
-	}
-
 	/*
 	 * public void configureGlobal1(AuthenticationManagerBuilder auth) throws
 	 * Exception {
@@ -72,9 +71,10 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	 * BCryptPasswordEncoder()); }
 	 */
 
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("Luiz").password("123").roles("USER").and().withUser("Land")
-				.password("123").roles("USER", "ADMIN");
-	}
-
+	/*
+	 * public void configureGlobal(AuthenticationManagerBuilder auth) throws
+	 * Exception {
+	 * auth.inMemoryAuthentication().withUser("Luiz").password("123").roles("USER").
+	 * and().withUser("Land") .password("123").roles("USER", "ADMIN"); }
+	 */
 }

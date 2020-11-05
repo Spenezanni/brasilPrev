@@ -16,10 +16,10 @@ import br.com.brasilPrev.modelo.Usuario;
 import br.com.brasilPrev.repository.UsuarioRepository;
 
 @Component
-@Transactional
 public class CustomUserDetailService implements UserDetailsService {
-
-	private final UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	@Autowired
 	public CustomUserDetailService(UsuarioRepository usuarioRepository) {
@@ -28,7 +28,7 @@ public class CustomUserDetailService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String nomeUsuario) throws UsernameNotFoundException {
-		Usuario usuario = (Usuario)Optional.ofNullable(this.usuarioRepository.findByNomeUsuario(nomeUsuario))
+		Usuario usuario = Optional.ofNullable(this.usuarioRepository.findByNomeUsuario(nomeUsuario))
 				.orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
 		List<GrantedAuthority> authorityAdmin = AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIN");
 		List<GrantedAuthority> authorityUser = AuthorityUtils.createAuthorityList("ROLE_USER");
